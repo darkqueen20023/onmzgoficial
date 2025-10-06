@@ -179,7 +179,6 @@
         const target = link.dataset.target;
         sections.forEach(sec => sec.classList.remove('ativo'));
         document.getElementById(target).classList.add('ativo');
-
         // fechar menu mobile após clique
         const nav = document.querySelector('header nav');
         if(nav.classList.contains('ativo')) nav.classList.remove('ativo');
@@ -207,6 +206,16 @@
 
       const codigo = 'MGZ' + Math.floor(Math.random()*9000 + 1000);
 
+      const mensagem = encodeURIComponent(
+        `Olá, quero confirmar meu pedido ${codigo}:\n\n` +
+        `📱 Modelo: ${modelo}\n` +
+        `🎨 Cor: ${cor}\n` +
+        `💾 Armazenamento: ${gb}\n` +
+        `📝 Nome: ${nome}\n` +
+        `📞 WhatsApp: ${telefone}\n` +
+        `🏠 Endereço: ${endereco}`
+      );
+
       resultado.innerHTML = `
         ✅ Pedido gerado com sucesso!<br><br>
         📱 Modelo: <b>${modelo}</b><br>
@@ -217,10 +226,15 @@
         🏠 Endereço: <b>${endereco}</b><br>
         📦 Código do pedido: <b>${codigo}</b><br>
         <img src="qrcode.png" width="180"/><br><br>
-        <a href="https://wa.me/554591033651?text=Olá, quero confirmar meu pedido ${codigo}" target="_blank" style="color:#007bff;">📲 Enviar via WhatsApp</a>
+        <a href="https://wa.me/554591033651?text=${mensagem}" target="_blank" style="color:#007bff;">📲 Enviar via WhatsApp</a>
       `;
       form.reset();
     });
   </script>
 </body>
 </html>
+
+  </script>
+</body>
+</html>
+
